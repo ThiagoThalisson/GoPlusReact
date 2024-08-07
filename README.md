@@ -15,6 +15,9 @@
 
 ### 📑️ `Practiced Topics`
 
+- Docker usage with Postgres and Pgadmin.
+- Tern usage to create GO migrations with Postgres.
+
 ### 📦 `Project Requirements`
 
 - [GO]().
