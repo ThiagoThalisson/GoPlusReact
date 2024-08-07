@@ -15,8 +15,8 @@
 
 ### 📑️ `Practiced Topics`
 
-- Docker usage with Postgres and Pgadmin.
-- Tern usage to create GO migrations with Postgres.
+- Docker usage with POSTGRES and PGADMIN.
+- Tern usage to create SQL migrations for POSTGRES.
 
 ### 📦 `Project Requirements`
 
