@@ -17,6 +17,8 @@
 
 - Docker usage with POSTGRES and PGADMIN.
 - Tern usage to create SQL migrations for POSTGRES.
+- SQLC usage for type-safe SQL integration with GO.
+- GO Generate usage to automate multiple command execution.
 
 ### 📦 `Project Requirements`
 
