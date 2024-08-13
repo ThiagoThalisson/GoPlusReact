@@ -35,5 +35,10 @@ func main() {
   }
   
   handler := api.NewHandler(pgstore.New(pool))
+  
+  go func() {
+    if err := http.L
+
+  }()
 
 }
