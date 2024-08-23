@@ -1,9 +1,12 @@
+
 package api
 
 import (
   "net/http"
   "log/slog"
   "errors"
+  "context"
+  "sync"
 
   "github.com/thiagothalisson/goplusreact/internal/store/pgstore"
   "github.com/go-chi/cors"
@@ -18,9 +21,11 @@ import (
 
 
 type apiHandler struct {
-  q *pgstore.Queries
-  r *chi.Mux
-  upgrader websocket.Upgrader
+  q           *pgstore.Queries
+  r           *chi.Mux
+  upgrader    websocket.Upgrader
+  subscribers map[string]map[*websocket.Conn]context.CancelFunc
+  mu          *sync.Mutex
 }
 
 func (h apiHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
@@ -32,6 +37,8 @@ func NewHandler(q *pgstore.Queries) http.Handler {
   a := apiHandler {
     q: q,
     upgrader: websocket.Upgrader{CheckOrigin: func(r *http.Request) bool { return true }},
+    subscribers: make(map[string]map[*websocket.Conn]context.CancelFunc),
+    mu: &sync.Mutex{},
   }
   
   r := chi.NewRouter()
